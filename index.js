@@ -1,9 +1,9 @@
 const express = require('express')
 
-const errorHandler = require('./middleware/errorHandler')
+const errorHandler = require('./middleware/errorsHandler')
 const notFound = require('./middleware/notFound')
 const app = express()
-const port = 3000
+
 
 app.use(express.static('public'))
 app.use (express.json())
@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(process.env.APP_PORT, () => {
+  console.log(`Example app listening on port ${process.env.APP_PORT}`)
 })
