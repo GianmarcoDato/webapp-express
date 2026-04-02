@@ -1,5 +1,5 @@
 const express = require('express')
-
+const movieRouter = require('./routers/movieRouter')
 const errorHandler = require('./middleware/errorsHandler')
 const notFound = require('./middleware/notFound')
 const app = express()
@@ -7,7 +7,7 @@ const app = express()
 
 app.use(express.static('public'))
 app.use (express.json())
-
+app.use("/api/movies", movieRouter)
 app.use(notFound)
 app.use(errorHandler)
 
@@ -15,7 +15,7 @@ app.use(errorHandler)
 
 
 app.get('/', (req, res) => {
-  res.send('Server del mio blog')
+  res.send('Hello World!')
 })
 
 
